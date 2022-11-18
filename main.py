@@ -107,11 +107,6 @@ for img_path in img:
 
 # Search Function
 
-# image frames
-for i in img:
-    st.write(i)
-
-
 search = st.text_input(" Search for objects below..")
 search_btn = st.button(label="Search")
 if search_btn:
