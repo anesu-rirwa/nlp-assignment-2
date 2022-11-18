@@ -81,7 +81,7 @@ for images in os.listdir(folder_path):
 
 
 for img_path in img:
-    frame_jpg = './images/' + img_path
+    frame_jpg = tempdirImg + '/' + img_path
     image = load_img(frame_jpg, target_size=(299, 299))
     image = img_to_array(image)
 
@@ -115,7 +115,7 @@ if search_btn:
             index = pred_list.index(search)
             st.write(f"{search} is in the video objects classified by our model.")
 
-            plot_img = Image.open('images\\' + pred_image[index])
+            plot_img = Image.open(tempdirImg + '\\' + pred_image[index])
 
             st.image(plot_img, width=299)
 
