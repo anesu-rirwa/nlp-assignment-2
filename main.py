@@ -1,3 +1,7 @@
+# Rirwa Anesu
+# R204432D
+# HAI - NLP Assignment 2
+
 import keras
 import numpy as np
 import cv2
