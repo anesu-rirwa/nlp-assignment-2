@@ -106,6 +106,9 @@ for img_path in img:
             continue
 
 # Search Function
+st.write(img)
+st.write(pred_list)
+st.write(pred_image)
 
 search = st.text_input(" Search for objects below..")
 search_btn = st.button(label="Search")
@@ -122,7 +125,6 @@ if search_btn:
         else:
             st.error(f"Error! {search} is not in the predicted results by our model" )
             st.write('Predicted Objects in the Video')
-            st.write(pred_list)
             for obj in pred_list:
                 st.write(obj)
     else:
