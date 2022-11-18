@@ -6,8 +6,8 @@ import keras
 import numpy as np
 import os
 import tempfile
+import cv2
 
-from opencv import cv2
 from os import listdir
 from os.path import exists
 from keras.applications.inception_v3 import InceptionV3
