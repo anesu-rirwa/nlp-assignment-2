@@ -33,13 +33,14 @@ uploaded_video = st.file_uploader("Upload a video", type=['mp4'])
 if uploaded_video is not None:
     file_details = {"FileName":uploaded_video.name, "FileType":uploaded_video.type}
 
+tempdirImg = tempfile.mkdtemp()
 
 submit = st.button(label="Submit", help="Click to classify objects in video")
 if submit:
 
     # Create a temporary directory
     tempdir = tempfile.mkdtemp()
-    tempdirImg = tempfile.mkdtemp()
+    
     # Save the uploaded video to the temporary directory
     temp_video_file = os.path.join(tempdir, file_details["FileName"])
 
