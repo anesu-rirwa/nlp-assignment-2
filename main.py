@@ -7,6 +7,7 @@ import numpy as np
 import os
 import tempfile
 import cv2
+import csv
 
 from os import listdir
 from os.path import exists
@@ -35,13 +36,19 @@ if uploaded_video is not None:
 
 submit = st.button(label="Submit", help="Click to classify objects in video")
 if submit:
-    with open(os.path.join("uploads", uploaded_video.name), "wb") as file:
-        file.write(uploaded_video.getbuffer())
+
+    # Create a temporary directory
+    tempdir = tempfile.mkdtemp()
+    tempdirImg = tempfile.mkdtemp()
+    # Save the uploaded video to the temporary directory
+    temp_video_file = os.path.join(tempdir, file_details["FileName"])
+
+    with open(temp_video_file, 'wb') as f:
+        f.write(uploaded_video.getbuffer())
 
         # Split Video into frames
 
-        video_path = 'uploads\\' + file_details['FileName']
-        video_capture = cv2.VideoCapture(video_path)
+        video_capture = cv2.VideoCapture(temp_video_file)
 
         frame_num = 0
 
@@ -50,7 +57,7 @@ if submit:
 
             if successFrame:
                 if frame_num < 21:
-                    cv2.imwrite("./images/frame%d.jpg" % frame_num, image)
+                    cv2.imwrite(tempdirImg + "/frame%d.jpg" % frame_num, image)
                 else:
                     break
 
@@ -64,7 +71,7 @@ pred_list = []
 pred_image = []
 
 # Feed the frames into inceptionv3 Model and get objects classified
-folder_path = "./images"
+folder_path = tempdirImg
 
 img = []
 
