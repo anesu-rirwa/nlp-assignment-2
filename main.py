@@ -122,6 +122,7 @@ if search_btn:
         else:
             st.error(f"Error! {search} is not in the predicted results by our model" )
             st.write('Predicted Objects in the Video')
+            st.write(pred_list)
             for obj in pred_list:
                 st.write(obj)
     else:
