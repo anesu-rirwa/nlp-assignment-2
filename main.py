@@ -4,12 +4,10 @@
 
 import keras
 import numpy as np
-from .cv2 import *
-import cv2
 import os
 import tempfile
 
-
+from opencv import cv2
 from os import listdir
 from os.path import exists
 from keras.applications.inception_v3 import InceptionV3
